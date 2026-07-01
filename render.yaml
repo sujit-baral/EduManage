@@ -15,7 +15,7 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: CLIENT_URL
-        value: https://college-management-frontend.onrender.com
+        value: https://edu-manage-seven-pearl.vercel.app
 
   - type: web
     name: college-management-frontend
