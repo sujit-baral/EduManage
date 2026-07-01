@@ -14,10 +14,24 @@ const app = express();
 // Apply Security Headers
 app.use(helmet());
 
-const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
+const defaultOrigins = [
+  "http://localhost:5173",
+  "https://edu-manage-seven-pearl.vercel.app",
+  "https://college-management-frontend.onrender.com"
+];
+
+const allowedOrigins = [...defaultOrigins];
+
+if (process.env.CLIENT_URL) {
+  process.env.CLIENT_URL.split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean)
+    .forEach((origin) => {
+      if (!allowedOrigins.includes(origin)) {
+        allowedOrigins.push(origin);
+      }
+    });
+}
 
 app.use(
   cors({
