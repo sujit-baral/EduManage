@@ -1,0 +1,19 @@
+# Robots.txt for EduManage College Portal
+
+# Allow search engines to index public landing pages
+User-agent: *
+Allow: /$
+Allow: /access$
+Allow: /modules$
+Allow: /security$
+
+# Block crawling of authenticated portal zones (Student/Faculty/Admin portals)
+Disallow: /student/
+Disallow: /faculty/
+Disallow: /admin/
+Disallow: /api/
+
+# Block direct query logs
+Disallow: /*?role=
+Disallow: /*?page=
+Disallow: /*?limit=

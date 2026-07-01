@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: college-management-backend
+    runtime: node
+    rootDir: Backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_DB_NAME
+        value: college_management
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        value: https://college-management-frontend.onrender.com
+
+  - type: web
+    name: college-management-frontend
+    runtime: static
+    rootDir: Frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://college-management-backend.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
