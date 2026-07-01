@@ -52,7 +52,7 @@ CLIENT_URL=https://college-management-frontend.onrender.com
 In Render, set this for the frontend static site:
 
 ```env
-VITE_API_URL=https://college-management-backend.onrender.com/api
+VITE_API_URL=https://edumanage-n02f.onrender.com/api
 ```
 
 If Render gives different service URLs, update `CLIENT_URL` and `VITE_API_URL` to match the actual URLs.
